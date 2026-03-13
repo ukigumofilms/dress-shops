@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dress Shop Guide | ukigumo wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #B5A99A;
+    --bg-light: #C4B9AB;
+    --card-bg: rgba(255,255,255,0.93);
+    --card-bg-hover: rgba(255,255,255,0.96);
+    --text-hero: #FFFFFF;
+    --text-hero-muted: rgba(255,255,255,0.8);
+    --text-hero-dim: rgba(255,255,255,0.55);
+    --text: #2E2519;
+    --text-muted: #5A4E42;
+    --text-dim: #8A7E70;
+    --divider: rgba(61,53,41,0.12);
+    --divider-hero: rgba(255,255,255,0.3);
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 400;
+    line-height: 1.9;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 56px;
+    color: var(--text-hero);
+  }
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-hero-muted);
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    margin-bottom: 10px;
+    color: var(--text-hero);
+  }
+  .hero-brand {
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--text-hero-dim);
+    margin-bottom: 28px;
+  }
+  .hero-line {
+    width: 36px;
+    height: 1px;
+    background: var(--divider-hero);
+    margin: 0 auto 28px;
+  }
+  .hero-desc {
+    font-size: 14px;
+    line-height: 2.2;
+    color: var(--text-hero-muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ── Shop Card ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 44px 32px 36px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .card-num {
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .card-name {
+    font-family: var(--serif);
+    font-size: clamp(24px, 4.5vw, 32px);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    border: 1px solid var(--divider);
+    border-radius: 20px;
+    padding: 3px 14px;
+    margin-bottom: 20px;
+  }
+  .card-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 2;
+    margin-bottom: 24px;
+  }
+  .card-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .card-points span {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: rgba(181,169,154,0.10);
+    border-radius: 20px;
+    padding: 5px 14px;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+
+  /* ── Price ── */
+  .price-head {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B5E50;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(61,53,41,0.15);
+  }
+  .price-block {
+    margin-bottom: 20px;
+    background: #EDE8E1;
+    border-radius: 12px;
+    padding: 20px 22px 16px;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  .price-row + .price-row { border-top: 1px solid rgba(61,53,41,0.08); }
+  .price-item { color: var(--text-muted); }
+  .price-val {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #3D2E1E;
+  }
+  .price-note {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 10px;
+    line-height: 1.9;
+  }
+  .price-sub-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    line-height: 1.7;
+    padding-left: 12px;
+    position: relative;
+  }
+  .price-sub-note::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: #A89880;
+    font-weight: 700;
+  }
+  .dress-list-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6B5E50;
+    text-decoration: none;
+    background: rgba(181,169,154,0.15);
+    padding: 8px 18px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+  .dress-list-link:hover {
+    background: rgba(181,169,154,0.28);
+  }
+  .price-block + .price-block,
+  .price-block + .collection,
+  .collection + .price-block,
+  .plan + .price-block {
+    margin-top: 24px;
+  }
+
+  /* ── Plan Group ── */
+  .plan {
+    margin-bottom: 16px;
+    background: #EDE8E1;
+    border-radius: 12px;
+    padding: 18px 22px 14px;
+  }
+  .plan-name {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .plan-badge {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(168,148,120,0.22);
+    color: #6B5E50;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .plan-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    line-height: 1.8;
+  }
+
+  /* ── Collection (Bee's Knees) ── */
+  .collection {
+    margin-bottom: 20px;
+    background: #EDE8E1;
+    border-radius: 12px;
+    padding: 20px 22px 16px;
+  }
+  .collection-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B5E50;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(61,53,41,0.15);
+  }
+  .collection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(61,53,41,0.08);
+  }
+  .collection-item:last-child { border-bottom: none; }
+  .collection-label { color: var(--text-muted); }
+  .collection-label strong {
+    font-weight: 500;
+    color: var(--text);
+    margin-right: 6px;
+  }
+  .collection-price {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    color: #3D2E1E;
+  }
+  .collection-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    padding-left: 20px;
+    margin-top: -2px;
+    margin-bottom: 4px;
+  }
+
+  /* ── Accordion ── */
+  .accordion {
+    margin-bottom: 24px;
+  }
+  .accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg);
+    border: none;
+    border-radius: 14px;
+    padding: 28px 28px;
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  .accordion-toggle::-webkit-details-marker { display: none; }
+  .accordion-toggle:hover {
+    background: #A69888;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    transform: translateY(-1px);
+  }
+  .accordion-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .accordion-label-sub {
+    font-family: var(--serif);
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: rgba(255,255,255,0.7);
+  }
+  .accordion-label-main {
+    font-family: var(--serif);
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: #FFFFFF;
+  }
+  .accordion-label-credit {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+  }
+  .accordion-arrow {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    transition: transform 0.25s ease;
+  }
+  details.accordion[open] .accordion-arrow {
+    transform: rotate(90deg);
+  }
+  .accordion-body {
+    padding-top: 20px;
+  }
+
+  /* ── Album Link ── */
+  .album-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--divider);
+    border-radius: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+  }
+  .album-link:hover {
+    background: rgba(181,169,154,0.12);
+    color: var(--text);
+  }
+
+  /* ── Instagram Link ── */
+  .ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: none;
+    border-radius: 24px;
+    padding: 10px 22px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+  }
+  .ig:hover {
+    background: #A69888;
+    transform: translateY(-1px);
+  }
+  .ig svg { width: 16px; height: 16px; opacity: 0.9; }
+
+  /* ── Divider between sections ── */
+  .section-gap {
+    text-align: center;
+    padding: 8px 0 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 20px 56px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    max-width: 680px;
+    margin: 0 auto;
+    color: #FFFFFF;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 10px;
+    line-height: 1.8;
+  }
+
+  /* ── Canva Embed ── */
+  .canva-embed {
+    margin: 24px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f5f0eb;
+  }
+  .canva-embed-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+  .canva-embed iframe {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* ── SP: brタグ制御 ── */
+  .sp-hide { display: inline; }
+
+  /* ── Responsive ── */
+  @media (max-width: 480px) {
+    /* brタグをモバイルで無効化 → テキストが自然に折り返す */
+    .sp-hide { display: none; }
+
+    .hero { padding: 56px 16px 44px; }
+    .hero-sub { font-size: 13px; letter-spacing: 0.25em; }
+    .hero-desc { font-size: 13px; line-height: 2.0; }
+    .hero-brand { font-size: 11px; letter-spacing: 0.3em; }
+
+    .container { padding: 0 10px 60px; }
+
+    .card { padding: 28px 16px 24px; }
+    .card-name { letter-spacing: 0.03em; }
+    .card-desc { font-size: 13px; line-height: 1.9; }
+    .card-points { gap: 6px; }
+    .card-points span { font-size: 11px; padding: 4px 11px; }
+    .card-tag {
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      padding: 3px 10px;
+    }
+
+    .price-block { padding: 14px 14px 10px; }
+    .plan { padding: 14px 14px 10px; }
+    .collection { padding: 14px 14px 10px; }
+
+    .price-head {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+    .collection-title {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+
+    /* 価格行 */
+    .price-row {
+      padding: 8px 0;
+      font-size: 13px;
+    }
+    .price-item {
+      font-size: 12px;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .price-val {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* コレクション行 */
+    .collection-item {
+      padding: 8px 0;
+      font-size: 13px;
+    }
+    .collection-label { font-size: 12px; }
+    .collection-price { font-size: 13px; }
+    .collection-sub { font-size: 11px; padding-left: 16px; }
+
+    /* プラン */
+    .plan-name { font-size: 14px; }
+    .plan-desc { font-size: 12px; }
+    .plan-badge { font-size: 9px; }
+    .price-note { font-size: 11px; }
+
+    /* アコーディオン */
+    .accordion-toggle { padding: 22px 18px; }
+    .accordion-label-main { font-size: 20px; letter-spacing: 0.08em; }
+    .accordion-label-sub { font-size: 10px; letter-spacing: 0.25em; }
+    .accordion-label-credit { font-size: 10px; }
+
+    /* アルバムリンク */
+    .album-link { font-size: 12px; padding: 5px 12px; }
+
+    /* IGボタン */
+    .ig { padding: 8px 16px; font-size: 12px; }
+
+    /* フッター */
+    .footer-brand { letter-spacing: 0.3em; font-size: 11px; }
+    .footer-note { font-size: 10px; }
+  }
+
+  /* iPhone SE / 12 mini 等 375px以下 */
+  @media (max-width: 375px) {
+    .card { padding: 22px 14px 20px; }
+    .price-block { padding: 12px 12px 8px; }
+    .plan { padding: 12px 12px 8px; }
+    .collection { padding: 12px 12px 8px; }
+    .price-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+    .collection-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+    .hero-title { letter-spacing: 0.08em; }
+    .card-name { font-size: 20px; letter-spacing: 0.02em; }
+    .card-tag { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ Hero ══ -->
+<section class="hero">
+  <p class="hero-sub">Partner Dress Shops</p>
+  <h1 class="hero-title">Dress Guide</h1>
+  <p class="hero-brand">u k i g u m o&ensp;w e d d i n g</p>
+  <div class="hero-line"></div>
+  <p class="hero-desc">
+    ukigumo weddingが提携する<br class="sp-hide">
+    4つのドレスショップをご紹介いたします。<br class="sp-hide">
+    各ブランドのInstagramより<br class="sp-hide">
+    お気軽にお問い合わせください。
+  </p>
+</section>
+
+<div class="container">
+
+<!-- ══ 01  Bee's Knees Dress ══ -->
+<div class="card">
+  <p class="card-num">01</p>
+  <h2 class="card-name">Bee's Knees</h2>
+  <span class="card-tag">ukigumo films 特別価格｜東京・赤坂</span>
+
+  <div class="card-points">
+    <span>豊富なラインナップ</span>
+    <span>国内・海外 同一価格</span>
+    <span>タキシード込み</span>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">Base Price（ドレス＋タキシード込み）</p>
+    <div class="price-row">
+      <span class="price-item">国内・海外共通</span>
+      <span class="price-val">¥110,000（税込）</span>
+    </div>
+  </div>
+
+  <div class="collection">
+    <p class="collection-title">国内 — Dress Collection</p>
+
+    <div class="collection-item">
+      <span class="collection-label"><strong>A</strong> プラン内 — 31着</span>
+      <span class="collection-price">プラン内</span>
+    </div>
+    <a href="https://photos.app.goo.gl/EEyaVbEQZQeTWHbe8" target="_blank" rel="noopener" class="dress-list-link">▶ ドレス一覧を見る</a>
+
+    <div class="collection-item" style="margin-top:12px;">
+      <span class="collection-label"><strong>B</strong> オプション — 29着</span>
+      <span class="collection-price">+ ¥55,000</span>
+    </div>
+    <a href="https://photos.app.goo.gl/PXDm8bfVzmedKHtA8" target="_blank" rel="noopener" class="dress-list-link">▶ ドレス一覧を見る</a>
+
+    <div class="collection-item" style="margin-top:12px;">
+      <span class="collection-label"><strong>C</strong> オプション</span>
+      <span class="collection-price">+ ¥242,000</span>
+    </div>
+    <p class="collection-sub">Milia London &amp; 韓国ドレス LEMERE</p>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">海外撮影の場合</p>
+    <div class="price-row">
+      <span class="price-item">セレクト可能数</span>
+      <span class="price-val">13型（全てプラン内）</span>
+    </div>
+    <div class="price-row">
+      <span class="price-item">アクセサリー</span>
+      <span class="price-val">1点追加（料金内）</span>
+    </div>
+    <a href="https://photos.app.goo.gl/HbF7sycxsduY5eCp8" target="_blank" rel="noopener" class="dress-list-link">▶ ドレス一覧を見る</a>
+    <p class="price-note">※ 試着2回必須（難しい場合は要相談）</p>
+  </div>
+
+  <a href="https://www.instagram.com/beesknees_dress/" target="_blank" rel="noopener" class="ig">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @beesknees_dress
+  </a>
+</div>
+
+<!-- ══ 02  Beacon Dress / Befits You ══ -->
+<div class="card">
+  <p class="card-num">02</p>
+  <h2 class="card-name">Beacon / Befits You</h2>
+  <span class="card-tag">ukigumo films 特別価格｜東京・麻布十番 / 大阪</span>
+
+  <div class="card-points">
+    <span>海外ブランドセレクト</span>
+    <span>大人の洗練スタイル</span>
+    <span>オンライン試着OK</span>
+  </div>
+
+  <details class="accordion">
+    <summary class="accordion-toggle">
+      <span class="accordion-label">
+        <span class="accordion-label-sub">SPECIAL PRICE</span>
+        <span class="accordion-label-main">PLAN LIST</span>
+        <span class="accordion-label-credit">ukigumo films × Beacon &amp; Befits You</span>
+      </span>
+      <span class="accordion-arrow">▸</span>
+    </summary>
+    <div class="accordion-body">
+      <div class="canva-embed">
+        <div style="position:relative;width:100%;height:0;padding-top:141.4%;overflow:hidden;border-radius:10px;">
+          <iframe loading="lazy" style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;"
+            src="https://www.canva.com/design/DAG-08YG5hA/Mb9pZnf_M5UvTw4jT_Axpg/view?embed"
+            allowfullscreen="allowfullscreen" allow="fullscreen">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <div class="plan">
+    <p class="plan-name">1. Standard Plan <span class="plan-badge">人気 No.1</span></p>
+    <p class="plan-desc">厳選13着・最大40万円相当のドレスも選べる</p>
+    <a href="https://www.canva.com/design/DAG-8KLBOl4/L9Sppo_PX7M7u6RwhH0hcA/view?utm_content=DAG-8KLBOl4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc741c39732" target="_blank" rel="noopener" class="dress-list-link">▶ ドレス一覧を見る</a>
+    <div class="price-row">
+      <span class="price-item">国内（4泊5日）</span>
+      <span class="price-val">¥126,500（税込）</span>
+    </div>
+    <div class="price-row">
+      <span class="price-item">海外（9泊10日）</span>
+      <span class="price-val">¥181,500（税込）</span>
+    </div>
+  </div>
+
+  <div class="plan">
+    <p class="plan-name">2. Casual Plan <span class="plan-badge">価格重視</span></p>
+    <p class="plan-desc">ミニマルで洗練されたカジュアルプラン</p>
+    <a href="https://www.canva.com/design/DAG-7VU7YrY/wHkfpksaH3Y9NHr_EMC-Ig/view?utm_content=DAG-7VU7YrY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he7e8d854dc#1" target="_blank" rel="noopener" class="dress-list-link">▶ ドレス一覧を見る</a>
+    <div class="price-row">
+      <span class="price-item">国内（4泊5日）</span>
+      <span class="price-val">¥82,500（税込）</span>
+    </div>
+    <div class="price-row">
+      <span class="price-item">海外（9泊10日）</span>
+      <span class="price-val">¥104,500（税込）</span>
+    </div>
+  </div>
+
+  <div class="plan">
+    <p class="plan-name">3. Another Plan <span class="plan-badge">こだわり派</span></p>
+    <p class="plan-desc">ご希望に合わせて200着以上からご提案。<br>Standard・Casual以外も20%OFFでレンタル可</p>
+    <p class="price-note">※ 詳細はInstagram DMよりお問い合わせください</p>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">Tuxedo Option</p>
+    <div class="price-row">
+      <span class="price-item">国内（4泊5日）</span>
+      <span class="price-val">¥55,000（税込）</span>
+    </div>
+    <div class="price-row">
+      <span class="price-item">海外（9泊10日）</span>
+      <span class="price-val">¥88,000（税込）</span>
+    </div>
+    <p class="price-note">※ クリーニング込み／ドレスレンタルの方のみ</p>
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+    <a href="https://www.instagram.com/beacondress/" target="_blank" rel="noopener" class="ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @beacondress
+    </a>
+    <a href="https://www.instagram.com/befitsyou/" target="_blank" rel="noopener" class="ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @befitsyou
+    </a>
+  </div>
+</div>
+
+<!-- ══ 03  Lumiere Wedding Dress ══ -->
+<div class="card">
+  <p class="card-num">03</p>
+  <h2 class="card-name">Lumiere Wedding Dress</h2>
+  <span class="card-tag">ukigumo films 特別価格｜東京・新宿</span>
+
+  <div class="card-points">
+    <span>繊細で上品なデザイン</span>
+    <span>50着以上から選べる</span>
+    <span>カラードレスも充実</span>
+    <span>タキシードあり</span>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">Dress + Tuxedo セット</p>
+    <div class="price-row">
+      <span class="price-item">セット価格</span>
+      <span class="price-val">¥85,000〜¥165,000（税別）</span>
+    </div>
+    <p class="price-sub-note">クリーニング代込み／セット割適用</p>
+    <p class="price-sub-note">ukigumo特別価格：さらに10%OFF</p>
+    <p class="price-sub-note">4泊5日／延泊 +¥5,000/着（1日あたり）</p>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">Dress のみ</p>
+    <div class="price-row">
+      <span class="price-item">ドレスレンタル</span>
+      <span class="price-val">¥40,000〜¥120,000（税別）</span>
+    </div>
+    <p class="price-sub-note">クリーニング代込み</p>
+    <p class="price-sub-note">ukigumo特別価格：さらに10%OFF</p>
+    <p class="price-sub-note">4泊5日／延泊 +¥5,000/着（1日あたり）</p>
+    <a href="https://dress.lumiere.tokyo.jp/categories/2879741" target="_blank" rel="noopener" class="dress-list-link">▶ ドレス一覧を見る</a>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">Tuxedo のみ</p>
+    <div class="price-row">
+      <span class="price-item">セット価格</span>
+      <span class="price-val">¥60,000（税別）</span>
+    </div>
+    <p class="price-sub-note">クリーニング代込み</p>
+    <p class="price-sub-note">ukigumo特別価格：さらに10%OFF</p>
+    <p class="price-sub-note">4泊5日／延泊 +¥5,000/着（1日あたり）</p>
+    <a href="https://dress.lumiere.tokyo.jp/categories/4481971" target="_blank" rel="noopener" class="dress-list-link">▶ タキシード一覧を見る</a>
+  </div>
+
+  <div class="collection">
+    <p class="price-head">試着について</p>
+    <p class="price-sub-note">本番日の5ヶ月前より受付</p>
+    <p class="price-sub-note">5ヶ月前以前は試着料¥3,000（成約時返金）</p>
+  </div>
+
+  <a href="https://www.instagram.com/lumierewedding_dress/" target="_blank" rel="noopener" class="ig">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @lumierewedding_dress
+  </a>
+</div>
+
+<!-- ══ 04  Chez Robe ══ -->
+<div class="card">
+  <p class="card-num">04</p>
+  <h2 class="card-name">Chez Robe</h2>
+  <span class="card-tag">東京・芝浦</span>
+
+  <div class="card-points">
+    <span>Vera Wang / Galia Lahav 取扱</span>
+    <span>ハイブランドも選べる</span>
+    <span>国内・海外対応</span>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">国内 — Dress Plan</p>
+    <p class="plan-desc">ドレス+アクセサリーのレンタル（全国対応）</p>
+    <div class="price-row">
+      <span class="price-item">価格帯（5段階・税込）</span>
+      <span class="price-val">¥71,500〜¥319,000</span>
+    </div>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">海外 — World Photo Plan</p>
+    <p class="plan-desc">3週間レンタル（ドレス+アクセサリー）</p>
+    <div class="price-row">
+      <span class="price-item">価格帯（5段階・税込）</span>
+      <span class="price-val">¥93,500〜¥341,000</span>
+    </div>
+  </div>
+
+  <div class="price-block">
+    <p class="price-head">Tuxedo Option</p>
+    <div class="price-row">
+      <span class="price-item">タキシード</span>
+      <span class="price-val">¥33,000（税込）</span>
+    </div>
+  </div>
+
+  <a href="https://www.instagram.com/chezrobe/" target="_blank" rel="noopener" class="ig">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @chezrobe
+  </a>
+</div>
+
+</div>
+
+<!-- ══ Footer ══ -->
+<footer class="footer">
+  <p class="footer-brand">u k i g u m o&ensp;w e d d i n g</p>
+  <p class="footer-note">各ショップへのお問い合わせは<br>Instagram DMよりお願いいたします</p>
+</footer>
+
+</body>
+</html>
